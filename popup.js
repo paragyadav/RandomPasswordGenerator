@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('generate').addEventListener('click', generatePassword);
   document.getElementById('showHistory').addEventListener('click', showHistory);
   document.getElementById('deleteHistory').addEventListener('click', deleteHistory);
-  document.getElementById('deleteSingleHistory').addEventListener('click', deleteSingleHistory);
 });
 
 function toggleTheme() {
@@ -93,10 +92,11 @@ function showHistory() {
                                 <button id="copyButton${index}">
                                   <img src="copy_icon.png" alt="Copy" width="16" height="16">
                                 </button>
-                                <button onclick="deleteSingleHistory(${index})">Delete</button>
+                                <button id="deleteSingleHistory${index}">Delete</button>
                                </p>`;
       historyDiv.appendChild(passwordRow);
       document.getElementById(`copyButton${index}`).addEventListener('click', () => copyPasswordToClipboard(password));
+      document.getElementById(`deleteSingleHistory${index}`).addEventListener('click', () => deleteSingleHistory(index));
     });
   });
 }

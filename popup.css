@@ -14,7 +14,7 @@
     justify-content: space-between;
     align-items: center;
   }
-  
+
   body {
     min-width: 500px; 
     max-width: 500px;
@@ -48,6 +48,11 @@
     padding: 10px;
     cursor: pointer;
     border-radius: 12px; /* Rounded corners */
+  }
+
+  #toggleTheme {
+    margin-top: 0px;
+    padding: 0px;
   }
   
   /* Light theme button colors */
