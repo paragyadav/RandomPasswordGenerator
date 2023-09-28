@@ -1,0 +1,69 @@
+:root {
+    --text-color-light: #000;
+    --bg-color-light: #fff;
+    --text-color-dark: #fff;
+    --bg-color-dark: #333;
+    --delete-button-light: #f44336;
+    --generate-button-dark: #d65687;
+    --delete-button-dark: #e53935;
+    --generate-button-light: #D1C4E9;  /* Light Purple */
+  }
+  
+  .headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  body {
+    min-width: 500px; 
+    max-width: 500px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  #container {
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  #optionsContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #firstRow,
+  #secondRow,
+  #thirdRow {
+    display: flex;
+    justify-content: start;
+  }
+
+  button {
+    margin-top: 10px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 12px; /* Rounded corners */
+  }
+  
+  /* Light theme button colors */
+  body[data-theme="light"] #generate {
+    background-color: var(--generate-button-light);
+  }
+  
+  body[data-theme="light"] #deleteHistory {
+    background-color: var(--delete-button-light);
+  }
+  
+  /* Dark theme button colors */
+  body[data-theme="dark"] #generate {
+    background-color: var(--generate-button-dark);
+  }
+  
+  body[data-theme="dark"] #deleteHistory {
+    background-color: var(--delete-button-dark);
+  }
