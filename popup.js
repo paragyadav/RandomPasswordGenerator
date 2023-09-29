@@ -69,11 +69,12 @@ function generatePassword() {
   });
   
   // Display generated password
-  document.getElementById('password').innerHTML = `<p>${retVal} 
-                                <button id="copyButtonGeneratedPassword">
-                                  <img src="copy_icon.png" alt="Copy" width="16" height="16">
+  document.getElementById('password').innerHTML = `<div class="generatedPassword">
+                                <p class="generatedPasswordText">${retVal} </p>
+                                <button class="rowActionButton" id="copyButtonGeneratedPassword">
+                                  <img src="copy_icon.png" alt="Copy" width="25" height="25">
                                 </button>
-                               </p>`;
+                               </div>`;
   document.getElementById(`copyButtonGeneratedPassword`).addEventListener('click', () => copyPasswordToClipboard(retVal));
 }
 
@@ -88,11 +89,14 @@ function showHistory() {
     
     history.forEach((password, index) => {
       const passwordRow = document.createElement('div');
-      passwordRow.innerHTML = `<div class="history"><p class="passandindex">${index + 1}. ${password} </p>
-                                <button id="copyButton${index}">
-                                  <img src="copy_icon.png" alt="Copy" width="12" height="12">
+      passwordRow.innerHTML = `<div class="history">
+                                <p class="historyPasswordText">${index + 1}. ${password} </p>
+                                <button class="rowActionButton" id="copyButton${index}">
+                                  <img src="copy_icon.png" alt="Copy" width="20" height="20">
                                 </button>
-                                <button id="deleteSingleHistory${index}" class="glow-on-hover">Delete</button>
+                                <button class="rowActionButton" id="deleteSingleHistory${index}">
+                                  <img src="delete_icon.svg" alt="Delete" width="20" height="20">
+                                </button>
                                </div>`;
       historyDiv.appendChild(passwordRow);
       document.getElementById(`copyButton${index}`).addEventListener('click', () => copyPasswordToClipboard(password));

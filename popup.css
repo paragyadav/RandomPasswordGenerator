@@ -25,7 +25,7 @@
     color: var(--text-color-light);
     transition: background-color 0.3s, color 0.3s;
   }
-  
+
   #container {
     padding: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -34,6 +34,27 @@
   #optionsContainer {
     display: flex;
     flex-direction: column;
+  }
+
+  .generatedPassword{
+    padding: 10px;
+    font-size: 20px;
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 8fr 2fr;
+    align-items: center;
+  }
+  
+  .generatedPasswordText {
+    word-wrap: break-word;  /* Older browsers */
+    overflow-wrap: break-word;
+    max-width: 400px;
+  }
+  
+  .historyPasswordText {
+    word-wrap: break-word;  /* Older browsers */
+    overflow-wrap: break-word;
+    max-width: 350px;
   }
   
   #firstRow,
@@ -49,6 +70,16 @@
     padding: 10px;
     cursor: pointer;
     border-radius: 12px; /* Rounded corners */
+  }
+
+  .rowActionButton {
+    cursor: pointer;
+    padding: 5px;
+    margin: 5px;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    border-radius: 12px;
   }
 
   #toggleTheme {
@@ -177,16 +208,15 @@ input[type=checkbox]:checked:disabled + label:before {
   background-color: #bfb;
   border-color: #bfb;
 }
+
 .history{
-  padding: 10px;
+  padding: 2px;
+  margin: 5px;
   display: grid;
-  grid-template-columns: 5fr 3fr 2fr;
+  grid-template-columns: 8fr 1fr 1fr;
   align-items: center;
 }
-.passandindex{
-  width: 100px;
-  text-wrap: wrap;
-}
+
 .historyHeader{
   padding: 10px;
 }
