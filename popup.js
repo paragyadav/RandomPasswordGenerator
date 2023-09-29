@@ -84,16 +84,16 @@ function showHistory() {
   chrome.storage.local.get({ passwordHistory: [] }, (result) => {
     const history = result.passwordHistory;
     const historyDiv = document.getElementById('history');
-    historyDiv.innerHTML = '<h2>Password History</h2>';
+    historyDiv.innerHTML = '<h2 class="historyHeader">Password History</h2>';
     
     history.forEach((password, index) => {
       const passwordRow = document.createElement('div');
-      passwordRow.innerHTML = `<p>${index + 1}. ${password} 
+      passwordRow.innerHTML = `<div class="history"><p class="passandindex">${index + 1}. ${password} </p>
                                 <button id="copyButton${index}">
-                                  <img src="copy_icon.png" alt="Copy" width="16" height="16">
+                                  <img src="copy_icon.png" alt="Copy" width="12" height="12">
                                 </button>
-                                <button id="deleteSingleHistory${index}">Delete</button>
-                               </p>`;
+                                <button id="deleteSingleHistory${index}" class="glow-on-hover">Delete</button>
+                               </div>`;
       historyDiv.appendChild(passwordRow);
       document.getElementById(`copyButton${index}`).addEventListener('click', () => copyPasswordToClipboard(password));
       document.getElementById(`deleteSingleHistory${index}`).addEventListener('click', () => deleteSingleHistory(index));

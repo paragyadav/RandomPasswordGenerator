@@ -14,21 +14,25 @@
     </div>
     <div id="optionsContainer">
       <div id="firstRow">
-        <label><input type="checkbox" id="includeUppercase" checked> Uppercase</label>
-        <label><input type="checkbox" id="includeLowercase" checked> Lowercase</label>
+       
+        <input type="checkbox" id="includeUppercase" checked><label for="includeUppercase"> Uppercase</label>
+        <input type="checkbox" id="includeLowercase" checked> <label for="includeLowercase">Lowercase </label>
       </div>
       <div id="secondRow">
-        <label><input type="checkbox" id="includeNumbers" checked> Numbers</label>
-        <label><input type="checkbox" id="includeSymbols" checked> Special Characters</label>
+        <input type="checkbox" id="includeNumbers" checked><label for="includeNumbers"> Numbers</label>
+        <label><input type="checkbox" id="includeSymbols" checked><label for="includeSymbols"> Special Characters</label>
       </div>
       <div id="thirdRow">
         <label>Password Length: <input type="number" id="length" min="1" value="12"></label>
+   
+          
+        </div>
       </div>
     </div>
     <div class="headerContainer">
-      <button id="generate">Generate</button>
-      <button id="showHistory">History</button>
-      <button id="deleteHistory">Delete History</button>
+      <button id="generate" class="glow-on-hover">Generate</button>
+      <button id="showHistory" class="glow-on-hover">History</button>
+      <button id="deleteHistory" class="glow-on-hover">Delete History</button>
     </div>
     <p id="password"></p>
     <div id="history"></div>
