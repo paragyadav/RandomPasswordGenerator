@@ -14,6 +14,12 @@
     justify-content: space-between;
     align-items: center;
   }
+  .generateButtonContainer {
+    display: flex;
+    margin: 10px;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   body {
     min-width: 500px; 
@@ -49,6 +55,15 @@
     word-wrap: break-word;  /* Older browsers */
     overflow-wrap: break-word;
     max-width: 400px;
+  }
+
+  .historyHeaderRow{
+    padding: 5px;
+    font-size: 15px;
+    margin: 5px;
+    display: grid;
+    grid-template-columns: 6fr 4fr;
+    align-items: center;
   }
   
   .historyPasswordText {
@@ -218,5 +233,6 @@ input[type=checkbox]:checked:disabled + label:before {
 }
 
 .historyHeader{
-  padding: 10px;
+  padding: 2px;
+  margin: 5px;
 }

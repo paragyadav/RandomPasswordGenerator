@@ -14,13 +14,13 @@ function toggleTheme() {
     document.documentElement.style.setProperty('--text-color-light', '#fff');
     document.documentElement.style.setProperty('--bg-color-light', '#333');
     document.body.setAttribute('data-theme', 'dark');
-    themeIcon.src = "light-dark-mode.png";  // Set the source for light theme icon
+    themeIcon.src = "icons/light-dark-mode.png";  // Set the source for light theme icon
   } else {
     // Switch to light theme
     document.documentElement.style.setProperty('--text-color-light', '#000');
     document.documentElement.style.setProperty('--bg-color-light', '#fff');
     document.body.setAttribute('data-theme', 'light');
-    themeIcon.src = "light-dark-mode.png";  // Set the source for dark theme icon
+    themeIcon.src = "icons/light-dark-mode.png";  // Set the source for dark theme icon
 
   }
 }
@@ -72,7 +72,7 @@ function generatePassword() {
   document.getElementById('password').innerHTML = `<div class="generatedPassword">
                                 <p class="generatedPasswordText">${retVal} </p>
                                 <button class="rowActionButton" id="copyButtonGeneratedPassword">
-                                  <img src="copy_icon.png" alt="Copy" width="25" height="25">
+                                  <img src="icons/copy.svg" alt="Copy" width="25" height="25">
                                 </button>
                                </div>`;
   document.getElementById(`copyButtonGeneratedPassword`).addEventListener('click', () => copyPasswordToClipboard(retVal));
@@ -85,17 +85,17 @@ function showHistory() {
   chrome.storage.local.get({ passwordHistory: [] }, (result) => {
     const history = result.passwordHistory;
     const historyDiv = document.getElementById('history');
-    historyDiv.innerHTML = '<h2 class="historyHeader">Password History</h2>';
+    historyDiv.innerHTML = `<p class="historyHeader">Password History</p>`;
     
     history.forEach((password, index) => {
       const passwordRow = document.createElement('div');
       passwordRow.innerHTML = `<div class="history">
                                 <p class="historyPasswordText">${index + 1}. ${password} </p>
                                 <button class="rowActionButton" id="copyButton${index}">
-                                  <img src="copy_icon.png" alt="Copy" width="20" height="20">
+                                  <img src="icons/copy.svg" alt="Copy" width="20" height="20">
                                 </button>
                                 <button class="rowActionButton" id="deleteSingleHistory${index}">
-                                  <img src="delete_icon.svg" alt="Delete" width="20" height="20">
+                                  <img src="icons/delete.svg" alt="Delete" width="20" height="20">
                                 </button>
                                </div>`;
       historyDiv.appendChild(passwordRow);
