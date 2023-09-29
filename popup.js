@@ -5,24 +5,48 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('deleteHistory').addEventListener('click', deleteHistory);
 });
 
+function setTheme(){
+  chrome.storage.local.get('currentTheme', (result) => {
+    const theme = result.currentTheme;
+    const themeIcon = document.getElementById('themeIcon');
+    if (theme === '#fff') {
+      document.documentElement.style.setProperty('--text-color-light', '#000');
+      document.documentElement.style.setProperty('--bg-color-light', '#fff');
+      document.body.setAttribute('data-theme', 'light');
+      themeIcon.src = "icons/light-dark-mode.png";  // Set the source for dark theme icon
+    } else {
+      document.documentElement.style.setProperty('--text-color-light', '#fff');
+      document.documentElement.style.setProperty('--bg-color-light', '#333');
+      document.body.setAttribute('data-theme', 'dark');
+      themeIcon.src = "icons/light-dark-mode.png";  // Set the source for light theme icon
+      
+    }
+  });
+}
+
+setTheme();
+
 function toggleTheme() {
   const themeIcon = document.getElementById('themeIcon');
   const currentTheme = getComputedStyle(document.documentElement).getPropertyValue('--bg-color-light').trim();
-
+  let newTheme = null;
   if (currentTheme === '#fff') {
     // Switch to dark theme
     document.documentElement.style.setProperty('--text-color-light', '#fff');
     document.documentElement.style.setProperty('--bg-color-light', '#333');
     document.body.setAttribute('data-theme', 'dark');
     themeIcon.src = "icons/light-dark-mode.png";  // Set the source for light theme icon
+    newTheme = '#333'
   } else {
     // Switch to light theme
     document.documentElement.style.setProperty('--text-color-light', '#000');
     document.documentElement.style.setProperty('--bg-color-light', '#fff');
     document.body.setAttribute('data-theme', 'light');
     themeIcon.src = "icons/light-dark-mode.png";  // Set the source for dark theme icon
-
+    newTheme = '#fff'
   }
+  chrome.storage.local.set({ currentTheme: newTheme }, () => {
+  });
 }
 
 function generatePassword() {
@@ -63,9 +87,7 @@ function generatePassword() {
   chrome.storage.local.get({ passwordHistory: [] }, (result) => {
     const history = result.passwordHistory;
     history.unshift(retVal);      
-    chrome.storage.local.set({ passwordHistory: history }, () => {
-      console.log('Password saved to history.');
-    });
+    chrome.storage.local.set({ passwordHistory: history })
   });
   
   // Display generated password
@@ -107,9 +129,7 @@ function showHistory() {
 
 function deleteHistory() {
   // Delete all password history
-  console.log('Password history deleted called');
   chrome.storage.local.set({ passwordHistory: [] }, () => {
-    console.log('Password history deleted.');
     showHistory(); // Refresh the history display
   });
 }
@@ -120,7 +140,6 @@ function deleteSingleHistory(index) {
     const history = result.passwordHistory;
     history.splice(index, 1); // Remove the item at the specified index
     chrome.storage.local.set({ passwordHistory: history }, () => {
-      console.log('Single history item deleted.');
       showHistory(); // Refresh the history display
     });
   });
@@ -130,7 +149,6 @@ function deleteSingleHistory(index) {
 async function copyPasswordToClipboard(password) {
   try {
     await navigator.clipboard.writeText(password);
-    console.log('Password copied to clipboard.');
   } catch (err) {
     console.error('Failed to copy text: ', err);
   }
